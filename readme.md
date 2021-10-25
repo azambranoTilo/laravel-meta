@@ -1,5 +1,5 @@
 
-# Laravel Meta
+# Laravel Meta BY A ZAMBRANO
 a laravel package for working with meta !
 <p align="center">
    <img src="https://raw.githubusercontent.com/ZohaBanam/files/master/larave-meta/images/victor.jpg" alt="Package Image" ><br>

@@ -27,8 +27,12 @@ trait MetableBase
      */
     public static function bootMetableBase()
     {
+
+        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+
+        
         static::deleted(function ($modelItem) {
-            \Zoha\Meta\Models\Meta::where('owner_type', static::class)->where('owner_id', $modelItem->id)->delete();
+            $MetaClass::where('owner_type', static::class)->where('owner_id', $modelItem->id)->delete();
         });
     }
 
@@ -48,10 +52,13 @@ trait MetableBase
      */
     public function meta($key = null, $value = Meta::NO_VALUE_FOR_PARAMETER, $type = null)
     {
+
+        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+        
         if ($key !== null) {
             return $this->processMetaRequest($key, $value, $type);
         }
-        $instance = new \Zoha\Meta\Models\Meta();
+        $instance = new $MetaClass();
         $instance->setTable($this->getMetaTable());
         list($type, $id) = $this->getMorphs('owner', null, null);
         $table = $instance->getTable();
@@ -65,7 +72,10 @@ trait MetableBase
      */
     public function metarelation()
     {
-        $instance = new \Zoha\Meta\Models\Meta();
+        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+
+
+        $instance = new $MetaClass;
         $instance->setTable($this->getMetaTable());
         list($type, $id) = $this->getMorphs('owner', null, null);
         $table = $instance->getTable();

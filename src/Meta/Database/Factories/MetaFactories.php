@@ -21,7 +21,9 @@ $factory->define(\Zoha\Meta\Models\ExampleModel::class, function (Faker $faker) 
     ];
 });
 
-$factory->define(\Zoha\Meta\Models\Meta::class , function(Faker $faker){
+$MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+
+$factory->define( $MetaClass , function(Faker $faker){
     return [
         'key' => $faker->unique()->word,
         'value' => $faker->sentence(3),

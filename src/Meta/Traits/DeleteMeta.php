@@ -15,6 +15,10 @@ trait DeleteMeta
      */
     public function deleteMeta($key = null)
     {
+
+        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+
+
         if ($key === null) {
             return $this->truncateMeta();
         }
@@ -28,7 +32,7 @@ trait DeleteMeta
             return $value->id === $currentMeta->id;
         });
         $this->refreshLoadedMetaItems();
-        \Zoha\Meta\Models\Meta::destroy($currentMeta->id);
+        $MetaClass::destroy($currentMeta->id);
         return true;
     }
 
@@ -50,7 +54,11 @@ trait DeleteMeta
      */
     public function truncateMeta()
     {
-        \Zoha\Meta\Models\Meta::destroy($this->getLoadedMeta()->pluck('id')->toArray());
+
+        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+
+
+        $MetaClass::destroy($this->getLoadedMeta()->pluck('id')->toArray());
         $this->loadedMeta = new Collection([]);
         return true;
     }

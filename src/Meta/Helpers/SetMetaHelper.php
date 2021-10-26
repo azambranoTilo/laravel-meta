@@ -164,8 +164,14 @@ abstract class SetMetaHelper
         $type,
         $types
     ) {
+
+        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+
+        
         if (!is_array($key)) {
-            $newMeta = new \Zoha\Meta\Models\Meta;
+
+
+            $newMeta = new  $MetaClass;
             $newMeta->setTable($instance->getMetaTable());
             $newMeta->status = true;
             $newMeta->type = $type;
@@ -177,7 +183,7 @@ abstract class SetMetaHelper
         } else {
             $currentMetaItem = [];
             foreach ($key as $keyItem => $keyItemValue) {
-                $currentMetaItemTemporary = new \Zoha\Meta\Models\Meta();
+                $currentMetaItemTemporary = new  $MetaClass();
                 $currentMetaItemTemporary->setTable($instance->getMetaTable());
                 $currentMetaItemTemporary->status = true;
                 $currentMetaItemTemporary->type = $types[$keyItem];

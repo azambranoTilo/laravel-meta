@@ -27,6 +27,7 @@ trait SetMeta
      */
     public function setMeta($key, $value = null, $type = null, $createMeta = null)
     {
+
         // If the type of operation is specified ( createMeta | updateMeta )
         if ($createMeta !== null) {
             if ($createMeta === false) {

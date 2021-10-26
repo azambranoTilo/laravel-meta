@@ -165,11 +165,9 @@ abstract class SetMetaHelper
         $types
     ) {
 
-        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
-
+        $MetaClass = config('meta.class', \Zoha\Meta\Models\Meta::class);
         
         if (!is_array($key)) {
-
 
             $newMeta = new  $MetaClass;
             $newMeta->setTable($instance->getMetaTable());

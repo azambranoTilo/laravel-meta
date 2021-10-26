@@ -21,7 +21,7 @@ $factory->define(\Zoha\Meta\Models\ExampleModel::class, function (Faker $faker) 
     ];
 });
 
-$MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+$MetaClass = config('meta.class', \Zoha\Meta\Models\Meta::class);
 
 $factory->define( $MetaClass , function(Faker $faker){
     return [

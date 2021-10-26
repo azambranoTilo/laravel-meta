@@ -16,7 +16,7 @@ trait DeleteMeta
     public function deleteMeta($key = null)
     {
 
-        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+        $MetaClass = config('meta.class', \Zoha\Meta\Models\Meta::class);
 
 
         if ($key === null) {
@@ -55,7 +55,7 @@ trait DeleteMeta
     public function truncateMeta()
     {
 
-        $MetaClass = config('meta.Class', \Zoha\Meta\Models\Meta::class);
+        $MetaClass = config('meta.class', \Zoha\Meta\Models\Meta::class);
 
 
         $MetaClass::destroy($this->getLoadedMeta()->pluck('id')->toArray());

@@ -31,8 +31,9 @@ trait DeleteMeta
         $this->loadedMeta = $this->getLoadedMeta()->reject(function ($value) use ($currentMeta) {
             return $value->id === $currentMeta->id;
         });
+        $currentMeta->delete();
+        
         $this->refreshLoadedMetaItems();
-        $MetaClass::destroy($currentMeta->id);
         return true;
     }
 
